@@ -3,4 +3,8 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <color name="background">#FA8E00</color>
+    <color name="white">#FFF</color>
+
 </resources>

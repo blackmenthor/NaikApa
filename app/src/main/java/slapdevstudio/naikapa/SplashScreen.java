@@ -2,8 +2,10 @@ package slapdevstudio.naikapa;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.TextView;
 
 /**
  * Created by User on 28/05/2015.
@@ -17,6 +19,13 @@ public class SplashScreen extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+        TextView logo_text = (TextView) findViewById(R.id.logo_text);
+
+        Typeface font = Typeface.createFromAsset(getAssets(),"fonts/bebas_neue.ttf");
+
+        logo_text.setTypeface(font);
+
 
         new Handler().postDelayed(new Runnable() {
 
