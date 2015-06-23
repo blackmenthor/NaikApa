@@ -54,7 +54,7 @@ public class MainActivity extends Activity {
             // Check if we were successful in obtaining the map.
             if (googleMap != null ) {
 
-                ygoogleMap.setMyLocationEnabled(true);
+                googleMap.setMyLocationEnabled(true);
 
                 googleMap.setOnMyLocationChangeListener(new GoogleMap.OnMyLocationChangeListener() {
 
