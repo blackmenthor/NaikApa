@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/logo_text"
         android:textSize="70dp"
-        android:letterSpacing="3.0"
+        android:letterSpacing="7.0"
         android:textColor="@color/white"
         android:text="Naik Apa"
         android:layout_gravity="center_horizontal" />

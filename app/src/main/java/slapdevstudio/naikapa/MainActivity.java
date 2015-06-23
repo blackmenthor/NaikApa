@@ -10,6 +10,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -26,6 +27,7 @@ import java.util.Locale;
 public class MainActivity extends Activity {
 
     private GoogleMap googleMap;
+    int counter = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,24 +58,30 @@ public class MainActivity extends Activity {
 
                 googleMap.setMyLocationEnabled(true);
 
+                googleMap.getUiSettings().setCompassEnabled(false);
+
                 googleMap.setOnMyLocationChangeListener(new GoogleMap.OnMyLocationChangeListener() {
 
                     @Override
                     public void onMyLocationChange(Location arg0) {
                         // TODO Auto-generated method stub
-                        Geocoder geocoder = new Geocoder(context, Locale.getDefault());
-                        MarkerOptions marker = null;
-                        try {
-                            List<android.location.Address> addresses = geocoder.getFromLocation(arg0.getLatitude(), arg0.getLongitude(), 1);
-                            String address = addresses.get(0).getAddressLine(0) + " " + addresses.get(0).getAddressLine(1) + " " + addresses.get(0).getAddressLine(2);
-                            marker = new MarkerOptions().position(new LatLng(arg0.getLatitude(), arg0.getLongitude())).title(address);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                        googleMap.addMarker(marker);
-                        CameraPosition cameraPosition = new CameraPosition.Builder().target(marker.getPosition()).zoom(20).tilt(90).build();
+                        if(counter < 1) {
+                            Toast.makeText(MainActivity.this, "Location changed", Toast.LENGTH_SHORT).show();
+                            Geocoder geocoder = new Geocoder(context, Locale.getDefault());
+                            MarkerOptions marker = null;
+                            try {
+                                List<android.location.Address> addresses = geocoder.getFromLocation(arg0.getLatitude(), arg0.getLongitude(), 1);
+                                String address = addresses.get(0).getAddressLine(0) + " " + addresses.get(0).getAddressLine(1) + " " + addresses.get(0).getAddressLine(2);
+                                marker = new MarkerOptions().position(new LatLng(arg0.getLatitude(), arg0.getLongitude())).title(address);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            googleMap.addMarker(marker);
+                            CameraPosition cameraPosition = new CameraPosition.Builder().target(marker.getPosition()).zoom(20).tilt(90).build();
 
-                        googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                            googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                            counter++;
+                        }
                     }
                 });
 
