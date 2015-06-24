@@ -10,6 +10,10 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -17,6 +21,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
@@ -41,6 +46,19 @@ public class MainActivity extends Activity {
         }catch (Exception e){
             e.printStackTrace();
         }
+
+        TextView youre = (TextView) findViewById(R.id.youre);
+        TextView location = (TextView) findViewById(R.id.location);
+        TextView submit = (TextView) findViewById(R.id.submit);
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "okay , submit your new location", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        ImageButton
+
     }
 
     /**
@@ -78,6 +96,7 @@ public class MainActivity extends Activity {
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
+
                             googleMap.addMarker(marker);
                             CameraPosition cameraPosition = new CameraPosition.Builder().target(marker.getPosition()).zoom(20).tilt(90).build();
 
