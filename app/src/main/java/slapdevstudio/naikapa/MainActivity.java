@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,9 +48,9 @@ public class MainActivity extends Activity {
             e.printStackTrace();
         }
 
-        TextView youre = (TextView) findViewById(R.id.youre);
-        TextView location = (TextView) findViewById(R.id.location);
-        TextView submit = (TextView) findViewById(R.id.submit);
+        final TextView youre = (TextView) findViewById(R.id.youre);
+        final TextView location = (TextView) findViewById(R.id.location);
+        final TextView submit = (TextView) findViewById(R.id.submit);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,7 +58,20 @@ public class MainActivity extends Activity {
             }
         });
 
-        ImageButton
+        final ImageButton search = (ImageButton) findViewById(R.id.search);
+
+        final EditText destination = (EditText) findViewById(R.id.destination);
+
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                youre.setVisibility(View.GONE);
+                submit.setVisibility(View.GONE);
+                location.setVisibility(View.GONE);
+                search.setBackgroundResource(R.drawable.mic);
+                destination.setVisibility(View.VISIBLE);
+            }
+        });
 
     }
 
