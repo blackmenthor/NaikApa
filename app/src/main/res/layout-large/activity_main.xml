@@ -75,11 +75,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
+            android:background="@color/white"
             android:id="@+id/search"
             android:src="@drawable/search"
             android:layout_marginTop="48dp"
             android:layout_marginLeft="40dp"
-            android:layout_alignLeft="@+id/garis"/>
+            android:layout_alignLeft="@+id/garis" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:id="@+id/mic"
+            android:src="@drawable/mic"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="45dp"
+            android:layout_alignLeft="@+id/garis"
+            android:visibility="gone"/>
 
         <View
             android:layout_width="match_parent"

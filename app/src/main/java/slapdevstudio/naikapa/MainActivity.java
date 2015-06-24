@@ -11,9 +11,11 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,7 +61,7 @@ public class MainActivity extends Activity {
         });
 
         final ImageButton search = (ImageButton) findViewById(R.id.search);
-
+        final ImageView mic = (ImageView) findViewById(R.id.mic);
         final EditText destination = (EditText) findViewById(R.id.destination);
 
         search.setOnClickListener(new View.OnClickListener() {
@@ -68,8 +70,11 @@ public class MainActivity extends Activity {
                 youre.setVisibility(View.GONE);
                 submit.setVisibility(View.GONE);
                 location.setVisibility(View.GONE);
-                search.setBackgroundResource(R.drawable.mic);
+                search.setVisibility(View.GONE);
+                mic.setVisibility(View.VISIBLE);
                 destination.setVisibility(View.VISIBLE);
+                InputMethodManager inputMethodManager=(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
             }
         });
 
@@ -112,7 +117,7 @@ public class MainActivity extends Activity {
                             }
 
                             googleMap.addMarker(marker);
-                            CameraPosition cameraPosition = new CameraPosition.Builder().target(marker.getPosition()).zoom(20).tilt(90).build();
+                            CameraPosition cameraPosition = new CameraPosition.Builder().target(marker.getPosition()).zoom(17).build();
 
                             googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
                             counter++;
