@@ -60,6 +60,8 @@ public class MainActivity extends Activity {
 
                 googleMap.getUiSettings().setCompassEnabled(false);
 
+                googleMap.getUiSettings().setMyLocationButtonEnabled(false);
+
                 googleMap.setOnMyLocationChangeListener(new GoogleMap.OnMyLocationChangeListener() {
 
                     @Override
