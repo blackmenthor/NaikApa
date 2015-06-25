@@ -50,34 +50,6 @@ public class MainActivity extends Activity {
             e.printStackTrace();
         }
 
-        final TextView youre = (TextView) findViewById(R.id.youre);
-        final TextView location = (TextView) findViewById(R.id.location);
-        final TextView submit = (TextView) findViewById(R.id.submit);
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "okay , submit your new location", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        final ImageButton search = (ImageButton) findViewById(R.id.search);
-        final ImageView mic = (ImageView) findViewById(R.id.mic);
-        final EditText destination = (EditText) findViewById(R.id.destination);
-
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                youre.setVisibility(View.GONE);
-                submit.setVisibility(View.GONE);
-                location.setVisibility(View.GONE);
-                search.setVisibility(View.GONE);
-                mic.setVisibility(View.VISIBLE);
-                destination.setVisibility(View.VISIBLE);
-                InputMethodManager inputMethodManager=(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
-            }
-        });
-
     }
 
     /**
